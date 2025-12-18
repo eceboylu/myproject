@@ -1,0 +1,432 @@
+﻿body {
+    opacity:0;
+    transition: opacity 0.8s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 26px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background: white;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 65px;
+    padding: 20px 30px;
+}
+
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+#menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu_title {
+    font-size: 23px;
+    margin-left: 9px;
+}
+
+.link {
+    margin-right: 32px;
+    font-size: clamp(16px, 2vw, 21px);
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+    .link:hover {
+        color: #069139;
+    }
+/* AKTİF MENÜ LİNK */
+.links .active {
+    color: #069139;
+    border-bottom: 4px solid #069139;
+    padding-bottom: 4px;
+}
+
+
+#icon {
+    color: #069139;
+    font-size: 26px;
+    margin-left: 10px;
+    position: relative;
+    top: -3px;
+}
+
+.Anasayfa {
+    background-image: url('cars.jpeg');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.anasayfa_div {
+    background-color: rgba(9, 2, 89, 0.5);
+    padding: 44px 26px 44px 40px;
+    border-radius: 17px;
+    font-size: 20px;
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.title_anasayfa {
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+}
+
+.titleA {
+    margin-bottom: 15px;
+}
+
+li {
+    margin-right: 30px;
+}
+
+
+.carbtn {
+    margin-top: 29px;
+    transition: all 0.3s ease;
+}
+
+.car_link {
+    padding: 7px 27px;
+    background: #0BA94A;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 13px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all 0.3s ease;
+}
+
+
+    .car_link:hover {
+        background: #069139;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+.carbtn:hover {
+    transform: scale(1.1);
+}
+
+
+
+.yazi {
+    margin-top: 26px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    position: relative;
+    white-space: nowrap;
+    opacity: 0;
+    animation: sagaKay 3s forwards ease-in-out; /* Animasyonu çalıştır */
+    animation-delay: 0.2s;
+}
+
+@keyframes sagaKay {
+    0% {
+        left: 100%; /* Sağ dışından başlar */
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1; /* Yavaşça görünür */
+    }
+
+    100% {
+        left: 0; /* Burada duracağı pozisyon */
+        opacity: 1;
+    }
+}
+
+
+/* DEĞİŞTİRİLECEK KISIM (Eski Grid Düzeni) */
+.cards_cars {
+    position: relative; /* Oklar için çok önemli */
+    padding: 24px 0; /* Sadece dikey padding kalsın */
+    background: #F6F6F6;
+    overflow: hidden;
+}
+
+/* DEĞİŞTİRİLECEK KISIM */
+.card {
+    position: relative;
+    transition: all 0.3s ease;
+    /* Yeni Slider Özellikleri: */
+    flex: 0 0 auto; /* Kartın küçülmesini engeller */
+    width: 100%;
+    max-width: 400px; /* Sabit bir kart genişliği */
+    margin: 0 65px; /* Kartlar arası boşluk */
+}
+
+    /* DEĞİŞTİRİLECEK KISIM */
+    /* #card ID'si yerine .card sınıfı kullanılarak hover efekti düzenlendi */
+    .card:hover {
+        transform: scale(1.1); 
+        /* 1.2 yerine 1.1 daha yumuşak olabilir */
+    }
+
+/* SLIDER CONTAINER */
+.slider-container {
+    display: flex; /* Kartları yan yana dizmek için */
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+    /* Okların konumu için içerik kenar boşluğu */
+    padding: 16px 25px 0 25px;
+    /* Scrollbar'ı tüm tarayıcılarda gizle */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+    .slider-container::-webkit-scrollbar {
+        display: none;
+    }
+
+/* SLIDER OK BUTONLARI */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #069139; /* Yeşil */
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    z-index: 10; /* Okların kartların ve diğer her şeyin üstünde olmasını sağlar */
+    opacity: 0.9;
+    transition: background 0.3s;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 20px;
+}
+
+    .slider-btn:hover {
+        background: #0BA94A;
+    }
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+
+#img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: relative;
+}
+
+
+
+.detay {
+    position: absolute;
+    inset: 0; /* top:0 right:0 bottom:0 left:0 */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 22px;
+}
+
+#links {
+    margin-top: 20px;
+  
+}
+
+
+
+    #links a {
+        background: #0BA94A;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        border-radius: 13px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: all 0.3s ease;
+        padding: 6px 20px;
+    }
+
+        #links a:hover {
+            background: #069139;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+
+
+.i20_title {
+    margin-left: 14px;
+}
+
+.aboutdiv {
+    display: flex;
+    padding: 88px 126px 0;
+    background: #EAE9E9;
+}
+
+.aboutimg {
+    height: 103%;
+}
+
+    .aboutimg h1 {
+        margin-bottom: 50px;
+        font-size: 55px;
+        color: #A30E07;
+        letter-spacing: 3px;
+    }
+
+    .aboutimg img {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+    }
+
+.about {
+    margin-top: 37px;
+    padding: 50px;
+    max-width: 1050px;
+    font-size: 19px;
+}
+
+.abouttext {
+    padding: 32px;
+    font-size: 25px;
+}
+
+.abouticon {
+    display: flex;
+    justify-content: space-around;
+    /* padding: 64px; */
+    margin-top: 7px;
+}
+
+.icons {
+    text-align: center;
+}
+
+    .icons i {
+        height: 64%;
+        font-size: 27px;
+        margin-bottom: 15px;
+        color: white;
+        background: darkred;
+        padding: 18px;
+        width: 44%;
+        border-radius: 23px;
+    }
+
+#i{
+    width: 31%;
+}
+
+    .icons p {
+        font-weight: bold;
+    }
+
+.aboutP span {
+    font-weight: bold;
+    font-size: 29px;
+    color: #A30E07;
+    border-bottom: 4px solid;
+}
+
+footer {
+    font-family: sans-serif;
+    padding: 19px 0px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 8px solid darkred;
+    border-radius: 75px;
+    margin-top: 41px;
+    max-width: 59%;
+    text-align: center;
+    margin: 25px auto;
+    transition: all 0.3s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 26px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+
+    footer:hover {
+        transform: scale(1.1);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 26px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    margin: 10px;
+}
+
+
+.contactIcon {
+    display: flex;
+    letter-spacing: 1px;
+    margin-bottom: 19px;
+}
+
+.socialmedia {
+    text-align: center;
+    font-size: 34px;
+}
+
+#iconcontact {
+    margin-right: 15px;
+    font-size: 24px;
+}
+
+.contactLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+
+.contactLink {
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.socialLink {
+    color: black;
+    margin-right: 28px;
+}
+
+#socialIcon:hover {
+    color: darkred;
+}
